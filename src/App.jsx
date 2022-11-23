@@ -18,10 +18,7 @@ const posts = [
       {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
       
       {type: 'link', content: ' 👉 jane.design/doctorcare'},
-      // {type: 'link', content: '<a href="">#novoprojeto </a>'},
-      // {type: 'link', content: '<a href="">#nlw </a>'},
-      // {type: 'link', content: '<a href="">#rocketseat</a>'},
-    
+      
     ],
     publishedAt: new Date('2022-11-10 20:00:00'),
   },
@@ -36,10 +33,7 @@ const posts = [
       {type: 'paragraph', content: 'Fala galeraa 👋'},
       {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
       {type: 'link', content: ' 👉 jane.design/doctorcare'},
-      // {type: 'link', content: '<a href="">#novoprojeto </a>'},
-      // {type: 'link', content: '<a href="">#nlw </a>'},
-      // {type: 'link', content: '<a href="">#rocketseat</a>'},
-    
+      
     ],
     publishedAt: new Date('2022-11-07 20:00:00'),
   },
@@ -53,15 +47,14 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-         {posts.map((post, id) => (
+         {posts.map((post) => (
             <Post
-            key={id}
+            key={post.id}
             author={post.author}
             content={post.content}
             publishedAt={post.publishedAt}
             />
          ))}
-
         </main>
       </div>
     </>
