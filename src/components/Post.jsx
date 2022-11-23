@@ -9,7 +9,7 @@ import styles from './Post.module.css';
 
 export function Post({author, content, publishedAt}) {
 
-  const [comments, setComment] = useState([
+  const [comments, setComments] = useState([
     'Post muito bacana, hein!'
   ])
   const [newCommentText, setNewCommentText] = useState('');
@@ -26,12 +26,21 @@ export function Post({author, content, publishedAt}) {
 
   function handleCreateNewComment() {
     event.preventDefault();
-    setComment([...comments, newCommentText]);
+    setComments([...comments, newCommentText]);
     setNewCommentText('');
   }
 
   function handleNewCommentChange() {
     setNewCommentText(event.target.value);
+  }
+
+  function deleteComment(commentToDelete) {
+    
+    const commentsWithoutDeleteOne = comments.filter(comment =>  {
+      return comment !== commentToDelete;
+    });
+    
+    setComments(commentsWithoutDeleteOne);
   }
 
   return (
@@ -75,9 +84,14 @@ export function Post({author, content, publishedAt}) {
       </form>
 
       <div className={styles.commentList}>
-        {comments.map(comment => {
-          return <Comment key={comment} content={comment} />
-        })}
+        {comments.map(comment => (
+            <Comment
+              key={comment}
+              content={comment}
+              onDeleteComment={deleteComment}
+            />
+          )
+        )}
 
       </div>
     </article>
